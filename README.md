@@ -6,7 +6,8 @@ Taking inspiration from [nuttylmao](https://nutty.gg/en-cad/products/apple-music
 https://cidercollective.itch.io/cider**
 
 Here's a preview of how the player will look once you import and get it working properly:
-![image](https://github.com/user-attachments/assets/7a771b34-3b86-4619-8ff4-7c3ce7528a74)
+![image](https://github.com/user-attachments/assets/845d69a9-2dd2-4e04-b2d4-253860ace759)
+
 
 
 
