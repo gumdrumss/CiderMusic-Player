@@ -1,0 +1,149 @@
+/* ==== BODY ==== */
+body {
+  background: transparent;
+  margin: 0;
+  font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; /* Change font here */
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==== MAIN PLAYER CONTAINER ==== */
+#content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px; /* Change player width here */
+  background: rgba(30,30,40,0.55); /* Frosted glass color */
+  border-radius: 24px; /* Change border radius here */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+  backdrop-filter: blur(32px) saturate(1.5);
+  -webkit-backdrop-filter: blur(32px) saturate(1.5);
+  padding: 32px 32px 24px 32px; /* Change padding here */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  gap: 18px; /* Even vertical spacing between children */
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1);
+}
+
+/* ==== BLURRED ALBUM ART BACKGROUND ==== */
+.player-bg-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.player-bg-inner img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  filter: blur(48px) brightness(0.7) saturate(1.2);
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
+  box-shadow: 
+    inset 0 0 120px 40px rgba(0, 0, 0, 0.95), /* much deeper inner shadow */
+    inset 0 8px 64px 16px rgba(0, 0, 0, 0.85), /* another deep inner shadow */
+    0 8px 32px rgba(0, 0, 0, 1),
+    0 2px 8px rgba(0, 0, 0, 1);
+}
+
+/* ==== ALBUM IMAGE ==== */
+#albumimg {
+  width: 100%;
+  max-width: 340px; /* Change album art size here */
+  height: 340px;
+  border-radius: 18px;
+  object-fit: cover;
+  background: #e0e0e0;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 1.5px 8px rgba(0, 0, 0, 0.6); /* Change shadow here */
+  z-index: 2;
+}
+
+/* ==== TRACK INFO ==== */
+#trackinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+}
+#title {
+  font-size: 1.5em;
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  color: #fff;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+#artist {
+  color: #e0e0e0;
+  font-size: 1.25em;
+  font-weight: 700;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+#album {
+  color: #b0b0b0;
+  font-size: 1.65em;
+  font-style: italic;
+  font-weight: 650;
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.55);
+}
+
+#times {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 0 4px 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #e0e0e0;
+  z-index: 2;
+}
+
+#progressTime {
+  text-align: left;
+}
+
+#duration {
+  text-align: right;
+}
+
+/* ==== PROGRESS BAR ==== */
+#progressBg {
+  width: 100%;
+  max-width: 340px;
+  height: 8px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 0 18px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  z-index: 2;
+}
+#progressBar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
+  border-radius: 4px;
+  transition: width 0.3s cubic-bezier(.4,0,.2,1);
+}
+

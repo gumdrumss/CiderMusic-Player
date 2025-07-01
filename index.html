@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cider4OBS</title>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+  integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="startWebSocket();">
+  <div id="content">
+    <!-- Optional: Blurred album art background inside player -->
+    <div class="player-bg-inner">
+      <img id="player-bg-img" src="placeholder.webp" alt="" />
+    </div>
+    <!-- Album art centered -->
+    <img id="albumimg" src="placeholder.webp" alt="Album Art">
+    <!-- Track info centered -->
+    <div id="trackinfo">
+      <span id="title">CiderMusic_Player | Connecting...</span>
+      <span id="artist">-/-</span>
+      <span id="album">-/-</span>
+    </div>
+    					<div id="times">
+						<div id="progressTime">2:29</div>
+						<div id="duration">3:43</div>
+					</div>
+    <div id="progressBg">
+      <div id="progressBar"></div>
+    </div>
+  </div>
+  <script src="connector.js"></script>
+</body>
+
+</html>
