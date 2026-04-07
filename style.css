@@ -2,31 +2,32 @@
 body {
   background: transparent;
   margin: 0;
-  font-family: 'Rubik', 'Segoe UI', Arial, sans-serif; /* Change font here */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ==== MAIN PLAYER CONTAINER ==== */
 #content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px; /* Change player width here */
-  background: rgba(30,30,40,0.55); /* Frosted glass color */
-  border-radius: 24px; /* Change border radius here */
-  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
-  backdrop-filter: blur(32px) saturate(1.5);
-  -webkit-backdrop-filter: blur(32px) saturate(1.5);
-  padding: 32px 32px 24px 32px; /* Change padding here */
+  position: relative;
+  width: 380px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 36px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 0.5px solid rgba(255, 255, 255, 0.25);
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  gap: 18px; /* Even vertical spacing between children */
-  transition: opacity 0.6s cubic-bezier(.4,0,.2,1);
+  gap: 20px;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==== BLURRED ALBUM ART BACKGROUND ==== */
@@ -42,32 +43,22 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200%;
-  height: 200%;
+  width: 150%;
+  height: 150%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  filter: blur(48px) brightness(0.7) saturate(1.2);
-  opacity: 0.7;
-  pointer-events: none;
-  user-select: none;
-  box-shadow: 
-    inset 0 0 120px 40px rgba(0, 0, 0, 0.95), /* much deeper inner shadow */
-    inset 0 8px 64px 16px rgba(0, 0, 0, 0.85), /* another deep inner shadow */
-    0 8px 32px rgba(0, 0, 0, 1),
-    0 2px 8px rgba(0, 0, 0, 1);
+  filter: blur(60px) brightness(0.55) saturate(1.5);
+  opacity: 0.85;
 }
 
 /* ==== ALBUM IMAGE ==== */
 #albumimg {
   width: 100%;
-  max-width: 340px; /* Change album art size here */
-  height: 340px;
-  border-radius: 18px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
   object-fit: cover;
-  background: #e0e0e0;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.6),
-    0 1.5px 8px rgba(0, 0, 0, 0.6); /* Change shadow here */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
   z-index: 2;
 }
 
@@ -76,74 +67,60 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   z-index: 2;
+  width: 100%;
 }
 #title {
-  font-size: 1.5em;
+  font-size: 1.45em;
   font-weight: 700;
-  font-family: 'Rubik', sans-serif;
   color: #fff;
-  letter-spacing: 0.01em;
   text-align: center;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  letter-spacing: -0.02em;
 }
 #artist {
-  color: #e0e0e0;
-  font-size: 1.25em;
-  font-weight: 700;
-  font-family: 'Rubik', sans-serif;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1em;
+  font-weight: 600;
   text-align: center;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  letter-spacing: -0.01em;
 }
 #album {
-  color: #b0b0b0;
-  font-size: 1.65em;
-  font-style: italic;
-  font-weight: 600;
-  font-family: 'Rubik', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95em;
+  font-weight: 500;
   text-align: center;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.55);
+  margin-top: 2px;
 }
 
+/* ==== PROGRESS SECTION ==== */
 #times {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
-  max-width: 340px;
-  margin: 0 0 4px 0;
-  font-size: 25px;
-  font-weight: 700;
-  color: #e0e0e0;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
   z-index: 2;
+  margin-bottom: -15px;
 }
 
-#progressTime {
-  text-align: left;
-}
-
-#duration {
-  text-align: right;
-}
-
-/* ==== PROGRESS BAR ==== */
 #progressBg {
   width: 100%;
-  max-width: 340px;
-  height: 8px;
-  background: rgba(255,255,255,0.18);
-  border-radius: 4px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2.5px;
   overflow: hidden;
-  margin: 0 0 18px 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   z-index: 2;
 }
 #progressBar {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
-  border-radius: 4px;
-  transition: width 0.3s cubic-bezier(.4,0,.2,1);
+  background: #fff;
+  border-radius: 2.5px;
+  transition: width 0.3s linear;
 }
-
