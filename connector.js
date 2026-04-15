@@ -107,7 +107,7 @@ function updateComponents(data) {
   if (!data) return;
   const titleEl = document.getElementById("title");
   const artistEl = document.getElementById("artist");
-
+  
   titleEl.innerText = data.name || "Unknown Title";
   artistEl.innerText = data.artistName || "Unknown Artist";
   document.getElementById("album").innerText = data.albumName || "Unknown Album";
@@ -145,13 +145,13 @@ function updateScrolling(el) {
   const overflow = el.offsetWidth - container.offsetWidth;
   if (overflow > 0) {
     // We add a bit of padding to the scroll distance so it's not cut off
-    const scrollDistance = -(overflow + 20);
+    const scrollDistance = -(overflow + 20); 
     el.style.setProperty('--scroll-distance', `${scrollDistance}px`);
-
+    
     // Calculate duration based on distance (roughly 30px per second)
     const duration = Math.max(10, Math.abs(scrollDistance) / 30);
     el.style.setProperty('--scroll-duration', `${duration}s`);
-
+    
     el.classList.add('scrolling');
     // Ensure the container aligns to the left when scrolling
     container.style.justifyContent = 'flex-start';
