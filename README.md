@@ -68,3 +68,19 @@ If you want Streamer.bot to automatically announce every new song that starts pl
 
 The script is smart enough to only send a message if the song has actually changed since the last check!
 
+### Troubleshooting (Auto-Announcement)
+
+If automatic announcements aren't appearing:
+
+1. **Check the Logs:**
+   - In Streamer.bot, go to the **Log** tab.
+   - Look for entries starting with `[Cider]`.
+   - You should see lines like: `[Cider] Current: Song Title (ID) | Last: Old ID | Manual: False`.
+   - This will tell you if the script is running and what it's detecting.
+
+2. **Persistent Variables:**
+   - The script uses a global variable named `lastCiderSongId` to track changes.
+   - You can see (and reset) this in Streamer.bot under **Settings > Global Variables**.
+
+3. **Interval:**
+   - Ensure your **Timed Action** is enabled and the interval is not too long (5-10 seconds is recommended).

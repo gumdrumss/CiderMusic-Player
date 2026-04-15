@@ -49,11 +49,14 @@ public class CPHInline
 
                     if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(artist))
                     {
-                        // Check if this was triggered by a command (!song) or a timer
-                        bool isManual = args.ContainsKey("command");
+                        // Check if this was triggered by a command (!song)
+                        // Note: Some versions of Streamer.bot might use different keys, checking both
+                        bool isManual = args.ContainsKey("command") || args.ContainsKey("commandId") || args.ContainsKey("userInput");
 
                         // Get the last played song ID from global variables
                         string lastSongId = CPH.GetGlobalVar<string>("lastCiderSongId", true);
+
+                        CPH.LogInfo($"[Cider] Current: {name} ({songId}) | Last: {lastSongId} | Manual: {isManual}");
 
                         if (isManual || songId != lastSongId)
                         {
@@ -65,17 +68,26 @@ public class CPHInline
                             }
 
                             CPH.SendMessage(message);
+                            CPH.LogInfo($"[Cider] Announced: {message}");
 
                             // Update the last played song ID
                             CPH.SetGlobalVar("lastCiderSongId", songId, true);
                         }
                     }
+                    else
+                    {
+                        CPH.LogInfo("[Cider] Received empty song data - possibly idle or transitioning.");
+                    }
+                }
+                else
+                {
+                    CPH.LogInfo($"[Cider] API Error: {response.StatusCode}");
                 }
             }
         }
         catch (Exception ex)
         {
-            CPH.LogDebug($"Cider !song Error: {ex.Message}");
+            CPH.LogDebug($"[Cider] Exception: {ex.Message}");
         }
 
         return true;
