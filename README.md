@@ -1,4 +1,4 @@
-Taking inspiration from [nuttylmao](https://nutty.gg/en-cad/products/apple-music-widget) and [ryzetech Cider Music Widget](https://github.com/ryzetech/cider4obs.git), I developed a Music Player Widget for Apple Music users who wish to display their music on stream. I took a bit of an inspiration from the Apple Music Player UI also to develop the look.
+Taking inspiration from [nuttylmao](https://nutty.gg/en-cad/products/apple-music-widget) and [ryzetech Cider Music Widget](https://github.com/ryzetech/cider4obs.git), I developed a Music Player Widget for Apple Music users who wish to display their music on stream. I took a bit of an inspiration from the Apple Music Player UI also and developed the look with the help of JulesAI. Please note, this was just a side project I did for myself and am not looking to profit from it in any manner.
 
 
 **THIS APP REQUIRES CIDER(PREFERABLY V2+, which costs US$3.49.**
