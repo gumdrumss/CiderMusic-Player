@@ -35,9 +35,13 @@ You can also set up a chat command (like `!song`) to display what you're current
    - Right-click and select **Add**. Name it `Cider Now Playing`.
    - In the **Sub-Actions** pane, right-click and select **Core > C# > Execute C# Code**.
 
-3. **Add the C# Code:**
+3. **Add the C# Code & References:**
    - Open the `Streamerbot_Cider_Action.cs` file from this repository and copy its entire content.
    - In the Streamer.bot C# editor, delete any existing code and paste the content you copied.
+   - **References:** Click on the **References** tab in the C# editor.
+     - Right-click in the list and select **Add reference from file...**
+     - Search for and add `System.Net.Http.dll` (usually found in the Streamer.bot folder or Windows GAC).
+     - Also ensure `Newtonsoft.Json.dll` is present in the references (it is usually added by default or can be found in the Streamer.bot folder).
    - **Authentication (Optional):** If you enabled authentication in Cider, find the line `string apiToken = "";` and enter your token between the quotes.
    - Click **Save and Compile**. You should see "Compiled successfully!" at the bottom.
 
