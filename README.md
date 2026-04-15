@@ -54,4 +54,17 @@ You can also set up a chat command (like `!song`) to display what you're current
 
 Now, when someone types `!song` in your chat, Streamer.bot will fetch the song info from Cider and post it to chat!
 
+### Automatic Song Announcements
+
+If you want Streamer.bot to automatically announce every new song that starts playing:
+
+1. **Set up a Timed Action:**
+   - Go to the **Settings > Timed Actions** tab in Streamer.bot.
+   - Right-click and select **Add**.
+   - Name it `Cider Auto Announce`.
+   - Set the **Interval** to something like 5 or 10 seconds.
+   - Set the **Action** to `Cider Now Playing`.
+   - Click **OK** and ensure it's enabled.
+
+The script is smart enough to only send a message if the song has actually changed since the last check!
 
