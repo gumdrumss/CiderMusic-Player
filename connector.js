@@ -105,9 +105,24 @@ function startWebSocket() {
 
 function updateComponents(data) {
   if (!data) return;
-  document.getElementById("title").innerText = data.name || "Unknown Title";
-  document.getElementById("artist").innerText = data.artistName || "Unknown Artist";
+  const titleEl = document.getElementById("title");
+  const artistEl = document.getElementById("artist");
+
+  titleEl.innerText = data.name || "Unknown Title";
+  artistEl.innerText = data.artistName || "Unknown Artist";
   document.getElementById("album").innerText = data.albumName || "Unknown Album";
+
+  // Reset animations before calculating
+  titleEl.classList.remove('scrolling');
+  artistEl.classList.remove('scrolling');
+  titleEl.style.transform = '';
+  artistEl.style.transform = '';
+
+  // Small delay to allow layout update
+  setTimeout(() => {
+    updateScrolling(titleEl);
+    updateScrolling(artistEl);
+  }, 100);
 
   if (data.artwork && data.artwork.url) {
     let tmp = data.artwork.url.replace("{w}", data.artwork.width).replace("{h}", data.artwork.height);
@@ -121,6 +136,28 @@ function formatTime(seconds) {
   const m = Math.floor(seconds / 60);
   const s = Math.floor(seconds % 60);
   return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+function updateScrolling(el) {
+  const container = el.parentElement;
+  if (!container) return;
+
+  const overflow = el.offsetWidth - container.offsetWidth;
+  if (overflow > 0) {
+    // We add a bit of padding to the scroll distance so it's not cut off
+    const scrollDistance = -(overflow + 20);
+    el.style.setProperty('--scroll-distance', `${scrollDistance}px`);
+
+    // Calculate duration based on distance (roughly 30px per second)
+    const duration = Math.max(10, Math.abs(scrollDistance) / 30);
+    el.style.setProperty('--scroll-duration', `${duration}s`);
+
+    el.classList.add('scrolling');
+    // Ensure the container aligns to the left when scrolling
+    container.style.justifyContent = 'flex-start';
+  } else {
+    container.style.justifyContent = 'center';
+  }
 }
 
 window.addEventListener('DOMContentLoaded', startWebSocket);
